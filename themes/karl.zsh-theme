@@ -1,9 +1,17 @@
 # This is just a copy of the "candy" prompt with the time moved to the right.
 
+autoload -U colors && colors
+
 # PROMPT=$'%{$fg_bold[green]%}%n@%m %{$fg[blue]%} %{$reset_color%}%{$fg[white]%}[%~]%{$reset_color%} $(git_prompt_info)\
 # %{$fg[blue]%}->%{$fg_bold[blue]%} %#%{$reset_color%} '
 
-PROMPT=$'%{$fg[yellow]%}%n @ %m %{$fg[blue]%} %{$reset_color%}%{$fg[white]%}[%~]%{$reset_color%} $(git_prompt_info)\
+# Use this one for solarized
+# PROMPT=$'%{$fg[yellow]%}%n @ %m %{$fg[blue]%} %{$reset_color%}%{$fg[white]%}[%~]%{$reset_color%} $(git_prompt_info)\
+# %{$fg[blue]%}->%{$fg_bold[blue]%} %#%{$reset_color%} '
+# RPROMPT='%D{[%I:%M:%S]}'
+
+# Use this one for tomorrow
+PROMPT=$'%{$fg[yellow]%}%n @ %m %{$fg[blue]%} %{$reset_color%}%{$fg[blue]%}[%~]%{$reset_color%} $(git_prompt_info)\
 %{$fg[blue]%}->%{$fg_bold[blue]%} %#%{$reset_color%} '
 RPROMPT='%D{[%I:%M:%S]}'
 
