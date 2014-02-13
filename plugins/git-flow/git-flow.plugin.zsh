@@ -20,6 +20,12 @@
 #     c. Or, use this file as a oh-my-zsh plugin.
 #
 
+#Alias
+alias gf='git flow'
+alias gcd='git checkout develop'
+alias gch='git checkout hotfix'
+alias gcr='git checkout release'
+
 _git-flow ()
 {
 	local curcontext="$curcontext" state line
@@ -88,6 +94,8 @@ __git-flow-release ()
 				'start:Start a new release branch.'
 				'finish:Finish a release branch.'
 				'list:List all your release branches. (Alias to `git flow release`)'
+				'publish: public'
+				'track: track'
 			)
 			_describe -t commands 'git flow release' subcommands
 			_arguments \
@@ -113,6 +121,16 @@ __git-flow-release ()
 						-k'[Keep branch after performing finish]'\
 						-n"[Don't tag this release]"\
 						':version:__git_flow_version_list'
+				;;
+
+				(publish)
+					_arguments \
+						':version:__git_flow_version_list'\
+				;;
+
+				(track)
+					_arguments \
+						':version:__git_flow_version_list'\
 				;;
 
 				*)
@@ -237,13 +255,13 @@ __git-flow-feature ()
 
 				(diff)
 					_arguments \
-						':branch:__git_branch_names'\
+						':branch:__git_flow_feature_list'\
 				;;
 
 				(rebase)
 					_arguments \
 						-i'[Do an interactive rebase]' \
-						':branch:__git_branch_names'
+						':branch:__git_flow_feature_list'
 				;;
 
 				(checkout)
@@ -254,7 +272,7 @@ __git-flow-feature ()
 				(pull)
 					_arguments \
 						':remote:__git_remotes'\
-						':branch:__git_branch_names'
+						':branch:__git_flow_feature_list'
 				;;
 
 				*)
